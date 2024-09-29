@@ -15,6 +15,16 @@ api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
+-- Enable Obsidian plugin for specific markdown files
+local obsidian_group = api.nvim_create_augroup('obsidian', { clear = true })
+api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
+  pattern = '/home/repparw/Documents/obsidian/**.md',
+  group = obsidian_group,
+  callback = function()
+    vim.cmd('Obsidian')
+  end,
+})
+
 -- Disable spell checking in terminal buffers
 local nospell_group = api.nvim_create_augroup('nospell', { clear = true })
 api.nvim_create_autocmd('TermOpen', {
@@ -26,6 +36,10 @@ api.nvim_create_autocmd('TermOpen', {
 
 -- LSP
 local keymap = vim.keymap
+
+keymap.set('n', '<space>tt', '<cmd>Trouble diagnostics toggle<cr>', { desc = '[T]rouble [T]oggle' })
+keymap.set('n', '[t', '<cmd>Trouble previous<cr>', { desc = '[T]rouble previous' })
+keymap.set('n', ']t', '<cmd>Trouble next<cr>', { desc = '[T]rouble next' })
 
 local function preview_location_callback(_, result)
   if result == nil or vim.tbl_isempty(result) then
@@ -56,14 +70,11 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end,
 })
 
-vim.api.nvim_create_autocmd('LspAttach', {
+local lsp_attach = vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     local bufnr = ev.buf
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-    -- Attach plugins
-    require('nvim-navic').attach(client, bufnr)
 
     vim.cmd.setlocal('signcolumn=yes')
     vim.bo[bufnr].bufhidden = 'hide'
@@ -89,7 +100,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set('n', '<space>rn', vim.lsp.buf.rename, desc('lsp [r]e[n]ame'))
     keymap.set('n', '<space>wq', vim.lsp.buf.workspace_symbol, desc('lsp [w]orkspace symbol [q]'))
     keymap.set('n', '<space>dd', vim.lsp.buf.document_symbol, desc('lsp [dd]ocument symbol'))
-    keymap.set('n', '<M-CR>', vim.lsp.buf.code_action, desc('[lsp] code action'))
+    keymap.set('n', '<space>ca', vim.lsp.buf.code_action, desc('[lsp] code action'))
     keymap.set('n', '<M-l>', vim.lsp.codelens.run, desc('[lsp] run code lens'))
     keymap.set('n', '<space>cr', vim.lsp.codelens.refresh, desc('lsp [c]ode lenses [r]efresh'))
     keymap.set('n', 'gr', vim.lsp.buf.references, desc('lsp [g]et [r]eferences'))
@@ -120,6 +131,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+require('lsp-zero').extend_lspconfig {
+  sign_text = true,
+  lsp_attach = lsp_attach,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+}
 
 -- More examples, disabled by default
 
