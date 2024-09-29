@@ -118,8 +118,8 @@ let
     ruby-lsp
     rufo
 
-    basedpyright
-    vue-language-server
+    #basedpyright
+    #vue-language-server
   ];
 in
 {
