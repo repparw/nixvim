@@ -54,8 +54,9 @@ let
     telescope-zoxide
     telescope-ui-select-nvim
 
-    avante-nvim
+    #avante-nvim
     dressing-nvim
+    #render-markdown-nvim
 
     # LSP and language tools
     lsp-zero-nvim

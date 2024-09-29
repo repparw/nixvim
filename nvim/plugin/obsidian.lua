@@ -1,4 +1,4 @@
-require('obsidian.nvim').setup {
+require('obsidian').setup {
   workspaces = {
     {
       name = 'obsidian',

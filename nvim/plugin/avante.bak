@@ -1,4 +1,4 @@
-require('avante.nvim').setup {
+require('avante').setup {
   -- recommended settings
   provider = 'copilot',
   hints = { enabled = false },
