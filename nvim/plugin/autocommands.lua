@@ -15,16 +15,6 @@ api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
--- Enable Obsidian plugin for specific markdown files
-local obsidian_group = api.nvim_create_augroup('obsidian', { clear = true })
-api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
-  pattern = '/home/repparw/Documents/obsidian/**.md',
-  group = obsidian_group,
-  callback = function()
-    vim.cmd('Obsidian')
-  end,
-})
-
 -- Disable spell checking in terminal buffers
 local nospell_group = api.nvim_create_augroup('nospell', { clear = true })
 api.nvim_create_autocmd('TermOpen', {
