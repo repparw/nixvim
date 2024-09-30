@@ -8,6 +8,10 @@ vim.g.did_load_plugins_plugin = true
 
 require('nvim-surround').setup()
 
+require('notify').setup {
+  background_colour = '#000000',
+}
+
 require('copilot').setup {
   suggestion = { enabled = false },
   panel = { enabled = false },
