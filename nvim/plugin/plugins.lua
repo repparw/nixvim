@@ -17,4 +17,6 @@ require('copilot').setup {
   panel = { enabled = false },
 }
 
+require('trouble').setup()
+
 require('copilot_cmp').setup()
