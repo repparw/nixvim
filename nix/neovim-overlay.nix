@@ -108,10 +108,10 @@ let
     nil # nix lsp
     nixfmt-rfc-style
 
-    nodePackages_latest.typescript-language-server
+    typescript-language-server
 
     biome
-    nodePackages.prettier
+    #nodePackages.prettier
 
     rust-analyzer
 
