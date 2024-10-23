@@ -105,7 +105,7 @@ let
     lua-language-server
     stylua
 
-    nil # nix lsp
+    nixd # nix lsp
     nixfmt-rfc-style
 
     typescript-language-server
