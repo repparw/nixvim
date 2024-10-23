@@ -131,7 +131,7 @@ require('lsp-zero').extend_lspconfig {
 local servers = {
   'basedpyright',
   'ts_ls',
-  'nil_ls',
+  'nixd',
   'rust_analyzer',
   'lua_ls',
   'marksman',
