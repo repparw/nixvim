@@ -111,7 +111,7 @@ let
     typescript-language-server
 
     biome
-    #nodePackages.prettier
+    nodePackages.prettier
 
     rust-analyzer
 
