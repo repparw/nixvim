@@ -13,10 +13,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
--- Set void registers for x, s and c operations
--- This is useful to prevent overriding the system clipboard
+-- set void registers for x, s and c operations
+-- this is useful to prevent overriding the buffer
 vim.keymap.set('n', 'x', '"_x')
 vim.keymap.set('n', 'X', '"_X')
+
+-- void register for pasting text
+vim.keymap.set('n', '<leader>p', '"_dP')
 
 -- move visual selection with JK
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
