@@ -70,6 +70,36 @@ keymap.set('n', ']c', cright, { silent = true, desc = '[c]ycle quickfix right' }
 keymap.set('n', '[C', vim.cmd.cfirst, { silent = true, desc = 'first quickfix entry' })
 keymap.set('n', ']C', vim.cmd.clast, { silent = true, desc = 'last quickfix entry' })
 
+-- Visual line wraps
+keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
+-- set void registers for operations
+keymap.set('n', 'x', '"_x')
+keymap.set('n', 'X', '"_X')
+keymap.set('n', 's', '"_s')
+keymap.set('n', 'c', '"_c')
+keymap.set('n', '<leader>p', '"_dP')
+
+-- move visual selection
+keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
+keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
+
+-- move between splits
+keymap.set('n', '<C-h>', '<C-w>h')
+keymap.set('n', '<C-j>', '<C-w>j')
+keymap.set('n', '<C-k>', '<C-w>k')
+keymap.set('n', '<C-l>', '<C-w>l')
+
+-- clipboard operations
+keymap.set('n', '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+keymap.set('v', '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank lines to clipboard' })
+
+-- Disable Ex mode and add save shortcut
+keymap.set('n', 'Q', '<Nop>')
+keymap.set({ 'n', 'v' }, '<leader>s', ':update<CR>', { silent = true, desc = '[S]ave' })
+
 local function lleft()
   try_fallback_notify {
     try = vim.cmd.lprev,
@@ -174,17 +204,19 @@ keymap.set('n', ']h', function()
   }
 end, { noremap = true, silent = true, desc = 'next [h]int diagnostic' })
 
-local function toggle_spell_check()
-  ---@diagnostic disable-next-line: param-type-mismatch
-  vim.opt.spell = not (vim.opt.spell:get())
-end
-
-keymap.set('n', '<leader>S', toggle_spell_check, { noremap = true, silent = true, desc = 'toggle [S]pell' })
-
 keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'move [d]own half-page and center' })
 keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move [u]p half-page and center' })
 keymap.set('n', '<C-f>', '<C-f>zz', { desc = 'move DOWN [f]ull-page and center' })
 keymap.set('n', '<C-b>', '<C-b>zz', { desc = 'move UP full-page and center' })
+
+-- Location list and jumplist operations
+keymap.set('n', '<leader>l', function()
+  require('utils').toggle_ll()
+end, { silent = true, desc = 'Toggle location list' })
+
+keymap.set('n', '<leader><C-o>', function()
+  require('utils').jumps_to_qf()
+end, { silent = true, desc = 'Send jumplist to quickfix' })
 
 --- Disabled keymaps [enable at your own risk]
 

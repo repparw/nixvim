@@ -7,3 +7,6 @@ require('avante').setup {
   hints = { enabled = false },
   behaviour = { auto_suggestions = false },
 }
+
+-- Set up Avante keymaps
+vim.keymap.set({ 'n', 'v' }, '<leader>ac', ':AvanteChat<CR>', { silent = true, desc = 'avante: chat' })

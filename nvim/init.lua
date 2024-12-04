@@ -5,5 +5,3 @@ vim.g.mapleader = ' '
 require('options')
 
 require('utils')
-
-require('keymaps')
