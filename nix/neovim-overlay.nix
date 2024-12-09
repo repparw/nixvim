@@ -120,8 +120,6 @@ let
 
     biome
     nodePackages.prettier
-
-    rust-analyzer
   ];
 in
 {
