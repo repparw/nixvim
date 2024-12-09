@@ -9,5 +9,5 @@ vim.g.vimtex_compiler_latexmk = {
 }
 vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_fold_enabled = false
-vim.g.vimtex_view_forward_search_on_start = true
+vim.g.vimtex_view_forward_search_on_start = false
 vim.g.vimtex_bibtex_options = '--min-crossrefs=999'
