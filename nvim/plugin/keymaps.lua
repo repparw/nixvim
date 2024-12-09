@@ -145,10 +145,6 @@ keymap.set('n', '<leader>fq', function()
   vim.cmd('fclose!')
 end, { silent = true, desc = '[f]loating windows: [q]uit/close all' })
 
--- Remap Esc to switch to normal mode and Ctrl-Esc to pass Esc to terminal
-keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })
-keymap.set('t', '<C-Esc>', '<Esc>', { desc = 'send Esc to terminal' })
-
 -- Shortcut for expanding to current buffer's directory in command mode
 keymap.set('c', '%%', function()
   if fn.getcmdtype() == ':' then
@@ -217,16 +213,3 @@ end, { silent = true, desc = 'Toggle location list' })
 keymap.set('n', '<leader><C-o>', function()
   require('utils').jumps_to_qf()
 end, { silent = true, desc = 'Send jumplist to quickfix' })
-
---- Disabled keymaps [enable at your own risk]
-
--- Automatic management of search highlight
--- XXX: This is not so nice if you use j/k for navigation
--- (you should be using <C-d>/<C-u> and relative line numbers instead ;)
---
--- local auto_hlsearch_namespace = vim.api.nvim_create_namespace('auto_hlsearch')
--- vim.on_key(function(char)
---   if vim.fn.mode() == 'n' then
---     vim.opt.hlsearch = vim.tbl_contains({ '<CR>', 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char))
---   end
--- end, auto_hlsearch_namespace)

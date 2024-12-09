@@ -3,7 +3,7 @@ require('avante').setup {
   copilot = {
     model = 'claude-3.5-sonnet',
   },
-  auto_suggestions_provider = 'claude',
+  auto_suggestions_provider = 'copilot',
   hints = { enabled = false },
   behaviour = { auto_suggestions = false },
 }
