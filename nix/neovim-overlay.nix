@@ -111,6 +111,8 @@ let
     lua-language-server
     stylua
 
+    nodejs
+
     nixd # nix lsp
     nixfmt-rfc-style
 
@@ -120,8 +122,6 @@ let
     nodePackages.prettier
 
     rust-analyzer
-
-    texliveMedium
   ];
 in
 {
