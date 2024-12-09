@@ -83,6 +83,7 @@ let
     trouble-nvim
     todo-comments-nvim
     noice-nvim
+    which-key-nvim
 
     # Themes/colors
     gruvbox-nvim
@@ -100,7 +101,6 @@ let
     # bleeding-edge plugins from flake inputs
     # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
     # ^ bleeding-edge plugins from flake inputs
-    which-key-nvim
   ];
 
   extraPackages = with pkgs; [
@@ -121,11 +121,7 @@ let
 
     rust-analyzer
 
-    ruby-lsp
-    rufo
-
-    basedpyright
-    vue-language-server
+    texliveMedium
   ];
 in
 {
