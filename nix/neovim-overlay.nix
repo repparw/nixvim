@@ -39,8 +39,14 @@ let
     cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
     cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
 
+    nvim-treesitter
+    cmp-treesitter
+
     copilot-lua
     copilot-cmp
+
+    vimtex
+    cmp-vimtex
 
     # git integration plugins
     diffview-nvim # https://github.com/sindrets/diffview.nvim/
