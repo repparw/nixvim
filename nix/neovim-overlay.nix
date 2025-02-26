@@ -118,7 +118,7 @@ let
 
     typescript-language-server
 
-    biome
+    #biome
     nodePackages.prettier
   ];
 in
