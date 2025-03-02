@@ -61,6 +61,7 @@ let
     telescope-ui-select-nvim
 
     avante-nvim
+    img-clip-nvim
     dressing-nvim
     render-markdown-nvim
 
