@@ -91,6 +91,8 @@ let
     tokyonight-nvim
     rose-pine
 
+    nvim-highlight-colors
+
     # libraries that other plugins depend on
     plenary-nvim
     nvim-notify
