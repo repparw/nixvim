@@ -60,11 +60,6 @@ let
     telescope-zoxide
     telescope-ui-select-nvim
 
-    avante-nvim
-    img-clip-nvim
-    dressing-nvim
-    render-markdown-nvim
-
     # LSP and language tools
     lsp-zero-nvim
     nvim-lspconfig
